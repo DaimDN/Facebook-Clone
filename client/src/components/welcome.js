@@ -1,4 +1,4 @@
-import React, {Ref} from 'react'
+import React, {Ref, Fragment} from 'react'
 import Navbar from '../components/navbar'
 import {TextField} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
@@ -7,6 +7,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Register from './Register'
 
 const useStyles = makeStyles({
     root: {
@@ -32,6 +33,8 @@ const useStyles = makeStyles({
         email: ''
     });
 
+    const [profile, setProfile] = React.useState(false);
+
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
 
@@ -56,8 +59,30 @@ const useStyles = makeStyles({
 
 
     return (
+      <div>
+      <div>
+        {profile === false ? (
+                <Fragment>
+                
+                
+                
+                </Fragment>
+              ) : (
+                <Fragment>
+                <div className="" style={{width: '200%', position: 'absolute', backgroundColor: 'rgb(255, 255, 255, 0.8)', height: '1000px'}}>
+                <div className="text-center mx-auto" style={{ width: '60%',marginTop: '30vh', position: 'fixed', left: '33%', zIndex: '200'}}>
+                  <Register/>
+                </div>
+                </div>
+                  
+                </Fragment>
+              )}
+
+                </div>
+
         <div style={{backgroundColor:'#F0F2F5', height: '800px', marginTop: '-120px'}}>
 
+      
         <div className="container">
 
 
@@ -100,7 +125,7 @@ const useStyles = makeStyles({
             <hr/>
            
            <div className="mx-auto text-center">
-           <button  style={{width: '60%', fontWeight: '600', fontSize: '17px', backgroundColor: '#36A420', color: 'white'}} className="btn btn-info btn-lg" type="submit">Create New Account</button>
+           <button  onClick={()=> setProfile(!profile)} style={{width: '60%', fontWeight: '600', fontSize: '17px', backgroundColor: '#36A420', color: 'white'}} className="btn btn-info btn-lg" type="submit">Create New Account</button>
 
 
 
@@ -119,6 +144,7 @@ const useStyles = makeStyles({
         </div>
         
        
+        </div>
         </div>
         </div>
     )
